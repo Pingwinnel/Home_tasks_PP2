@@ -7,4 +7,10 @@ elif(100>90):
     print("100 is greater than 90")
     
 #This is comment syntax
-    
+#python variables
+
+x=10
+print(type(x))
+y="12"
+print(type(y))
+
