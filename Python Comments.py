@@ -13,7 +13,7 @@ python doesnt make attention to
 string without variables
 and for comments number of 
 string symbols should to 
-be a odd number for each sides
+be a odd (more than 1) number for each sides
 
 
 """
