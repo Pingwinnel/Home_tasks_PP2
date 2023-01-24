@@ -1,4 +1,6 @@
 #Python Operators
+
+print(10 + 5)
 '''''
 --------------------------------------------------------
 Python divides the operators in the following groups:
@@ -14,7 +16,7 @@ Bitwise operators
 Python Arithmetic Operators
 Arithmetic operators are used with numeric values to perform common mathematical operations:
 -------------------------------------------------------
-+	Addition	    x + y	
++	Addition	    x + y  	
 -	Subtraction	    x - y	
 *	Multiplication	x * y	
 /	Division	    x / y	
@@ -80,5 +82,4 @@ Bitwise operators are used to compare (binary) numbers:
 <<	Zero fill left shift	Shift left by pushing zeros in from the right and let the leftmost bits fall off
 >>	Signed right shift	Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off
 '''
-print(10 + 5)
 
