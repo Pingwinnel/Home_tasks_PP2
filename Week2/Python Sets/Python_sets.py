@@ -126,10 +126,11 @@ for x in thisset:
   print(x)
 
 thisset = {"apple", "banana", "cherry"}
-​
+
+
 for x in thisset:
   print(x)
-​
+
 #cherry
 #banana
 #apple
@@ -146,5 +147,36 @@ set2 = {1, 2, 3}
 
 set1.update(set2)
 print(set1)   #{'a', 2, 3, 'c', 'b', 1}
- 
- 
+
+#Keep ONLY the Duplicates
+
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+x.intersection_update(y)
+
+print(x)   #{'apple'}
+
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+z = x.intersection(y)
+
+print(z)   #{'apple'}
+
+#Keep All, But NOT the Duplicates
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+x.symmetric_difference_update(y)
+
+print(x)     #{'google', 'banana', 'microsoft', 'cherry'}
+
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+z = x.symmetric_difference(y)
+
+print(z)   #{'google', 'banana', 'microsoft', 'cherry'}
+
+
