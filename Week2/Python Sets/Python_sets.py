@@ -52,3 +52,99 @@ for x in thisset:
 #banana
 #cherry
 #apple
+
+#Add Items
+thisset = {"apple", "banana", "cherry"}
+
+thisset.add("orange")
+
+print(thisset)           #{'cherry', 'apple', 'banana', 'orange'}
+
+#Add Sets
+thisset = {"apple", "banana", "cherry"}
+tropical = {"pineapple", "mango", "papaya"}
+
+thisset.update(tropical)
+
+print(thisset)                #{'apple', 'mango', 'cherry', 'pineapple', 'banana', 'papaya'}
+
+#Add Any Iterable
+thisset = {"apple", "banana", "cherry"}
+mylist = ["kiwi", "orange"]
+
+thisset.update(mylist)
+
+print(thisset)         #{'banana', 'cherry', 'apple', 'orange', 'kiwi'}
+
+#Remove Item
+thisset = {"apple", "banana", "cherry"}
+
+thisset.remove("banana")
+
+print(thisset)       #{'cherry', 'apple'}
+
+
+thisset = {"apple", "banana", "cherry"}
+
+thisset.discard("banana")
+
+print(thisset)      #{'cherry', 'apple'}
+
+thisset = {"apple", "banana", "cherry"}
+
+x = thisset.pop()
+
+print(x) #removed item
+
+print(thisset) #the set after removal
+
+
+thisset = {"apple", "banana", "cherry"}
+
+thisset.clear()
+
+print(thisset)       #set()
+
+
+
+#thisset = {"apple", "banana", "cherry"}
+
+#del thisset
+
+#print(thisset) #this will raise an error because the set no longer exists
+
+#Loop Items
+thisset = {"apple", "banana", "cherry"}
+
+for x in thisset:
+  print(x)
+
+
+thisset = {"apple", "banana", "cherry"}
+
+for x in thisset:
+  print(x)
+
+thisset = {"apple", "banana", "cherry"}
+​
+for x in thisset:
+  print(x)
+​
+#cherry
+#banana
+#apple
+
+#Join Two Sets
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+
+set3 = set1.union(set2)
+print(set3)   #{2, 1, 'b', 'c', 'a', 3}
+
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+
+set1.update(set2)
+print(set1)   #{'a', 2, 3, 'c', 'b', 1}
+ 
+ 
