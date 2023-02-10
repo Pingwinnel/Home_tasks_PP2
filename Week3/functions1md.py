@@ -13,6 +13,8 @@ def Count_legsheads(legs , head):
     chichead=head-rabhead
     return (int(rabhead),int(chichead))
 
+
+#4task
 def filter_prime(list):
     i=0
     while i<len(list):
@@ -26,7 +28,13 @@ def filter_prime(list):
             list.pop(i)
             i=i-1
         i+=1
-        
+
+
+#5task
+from itertools import permutations
+str=input()
+perms = [''.join(p) for p in permutations(str)]
+print(perms)
         
 #6task                
 def reverse_word(g):
