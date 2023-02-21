@@ -1,31 +1,18 @@
-class Animal():
-    legs=4
-    tail=1
-    def __init__(self,col,voic):
-        self.color=col
-        self.voice=voic
-    def give_voice(self):
-        g="Legs num: {} \nTail num: {} \nVoice type: {} \nColor: {}"
-        print(g.format(self.legs,self.tail,self.voice,self.color))
-    def set_name(self,name):
-        self.name=name
-    def get_name(self):
-        print(self.name)
-        
-class Cat(Animal):
-    def __init__(self, breed,col,voic):
-        super().__init__(col,voic)
-        self.breed=breed
-    def give_voice(self): 
-        g="Legs num: {} \nTail num: {} \nVoice type: {} \nColor: {}\nBreed : {}"
-        print(g.format(self.legs,self.tail,self.voice,self.color,self.breed))
-        print("Meow")
-         
-Cat1=Cat("street","black","meow")
-Cat1.give_voice()
-Cat1.set_name("Barsik")
-Cat1.get_name()
+import random
 
+germany=['g',]*4
+italy=['i',]*6
+russia=['r',]*7
+china=['c',]*5
+que=china.copy()
+que.extend(russia)
+que.extend(italy)
+que.extend(germany)
 
-
-        
+favEvent = 0
+totalVariants = 1000000
+for N in range(totalVariants):
+    random.shuffle(que)
+    if que[:3].count('i') > 0:
+        favEvent +=1
+print(f'probability = {favEvent/totalVariants}')
