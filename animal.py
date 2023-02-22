@@ -10,9 +10,9 @@ que.extend(italy)
 que.extend(germany)
 
 favEvent = 0
-totalVariants = 1000000
+totalVariants = 100000
 for N in range(totalVariants):
     random.shuffle(que)
-    if que[:3].count('i') > 0:
+    if que[:3].count('c') > 0:
         favEvent +=1
 print(f'probability = {favEvent/totalVariants}')
