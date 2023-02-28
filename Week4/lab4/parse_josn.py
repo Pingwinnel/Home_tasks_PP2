@@ -1,5 +1,5 @@
 import json
-with open('json.json') as file:
+with open('Week4\lab4\parsejson.json') as file:
     data=json.load(file)
 print('''Interface Status
 ================================================================================
