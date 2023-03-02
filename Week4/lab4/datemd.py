@@ -11,6 +11,18 @@ print("Yesterday:",yes_day, "\nToday:",today,"\nTommorow:",tomorro)
 #3ex
 print(today.strftime("%f"))
 #4ex
-year1=input("year")
-day1=input("Day")
-mounth1=input("mounth")
+from datetime import datetime, time
+def date_diff_in_Seconds(dt2, dt1):
+  timedelta = dt2 - dt1
+  return timedelta.days * 24 * 3600 + timedelta.seconds
+#Specified date
+year=input("Year: ")
+mount=input("Month: ")
+day=input("Day: ")
+hour=input("Hour: ")
+minute=input("Minute: ")
+second=input("Seconds: ")
+date1 = datetime.strptime(f'{year}-{mount}-{day} {hour}:{minute}:{second}', '%Y-%m-%d %H:%M:%S')
+#Current date
+date2 = datetime.now()
+print("\n%d seconds" %(date_diff_in_Seconds(date2, date1)))
