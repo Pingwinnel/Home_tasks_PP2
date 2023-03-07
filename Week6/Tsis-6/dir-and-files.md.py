@@ -1,9 +1,12 @@
-path="A.txt"
+path_folder="musor"
 #1ex
-read_=open(path,"r")
-print(read_.read())
+import os
+a=[files for files in os.listdir(path_folder)]
+for files in a:
+    print(files)
 #2ex
 import os
+path="A.txt"
 print('Exist:', os.access(path, os.F_OK))
 print('Readable:', os.access(path, os.R_OK))
 print('Writable:', os.access(path, os.W_OK))
@@ -36,6 +39,7 @@ for i in range(26):
         f=open(f"{char}.txt","x")
     except IOError as error:
         pass
+f.close()
 #7ex
 path1="A.txt"
 path2="B.txt"
@@ -53,3 +57,4 @@ if os.access(path, os.F_OK)==True:
     print("File succesful deleted")
 else:
     print("no such file in directory")
+    

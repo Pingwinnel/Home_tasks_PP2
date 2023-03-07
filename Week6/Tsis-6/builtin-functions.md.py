@@ -23,11 +23,11 @@ def Palidrome_test(str):
     else:
         print("No palindrome")
 #4ex
-import time as t
+import time
 import math
 
-def Sqrt_after_time(num,time):
-    t.sleep(time/1000)
+def Sqrt_with_delay(num,delay):
+    time.sleep(delay/1000)
     return math.sqrt(num)
 
 #5ex
