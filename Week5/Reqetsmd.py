@@ -36,9 +36,8 @@ print(x6)
 #7ex
 x7=re.split("_",user_input)
 z=""
-y=""
 for word in x7:
-    z=z+y.join(word.capitalize())
+    z=z+"".join(word.capitalize())
 print(z)
 #8ex
 x8=re.split("[A-Z]",user_input)
@@ -49,3 +48,4 @@ print(x9)
 #10ex
 x10=re.sub(r"(\w)([A-Z])",r"\1_\2",user_input)
 print(x10)
+
