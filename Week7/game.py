@@ -22,6 +22,7 @@ class SNAKE_BODY():
 screen=pygame.display.set_mode(SIZE)
 pygame.display.set_caption("Snake.exe")
 timer=pygame.time.Clock()
+
 def draw_blocks(color,row,column):
     pygame.draw.rect(screen,color,[SIZE_BLOCK+column*SIZE_BLOCK+MARGIN*(column+1),HEADER_MARGIN+SIZE_BLOCK+row*SIZE_BLOCK+MARGIN*(row+1),SIZE_BLOCK,SIZE_BLOCK])
 
@@ -70,5 +71,5 @@ while True:
     snake_blocks.append(new_head)
     snake_blocks.pop(0)
     timer.tick(2)
-    pygame.display.flip()
+    pygame.display.update()
     
