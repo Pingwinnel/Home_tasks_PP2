@@ -19,11 +19,11 @@ music_info=tx_font.render("None",1,'White','Black')
 
 while True:
         screen.blit(bg,(0,0))
-        bg.blit(bt_prev,(20,125))
-        bg.blit(bt_play,(60,125))
-        bg.blit(bt_stop,(100,125))
-        bg.blit(bt_next,(140,125))
-        bg.blit(music_info,(20,100))
+        screen.blit(bt_prev,(20,125))
+        screen.blit(bt_play,(60,125))
+        screen.blit(bt_stop,(100,125))
+        screen.blit(bt_next,(140,125))
+        screen.blit(music_info,(20,100))
         pygame.display.update()
         
         for event in pygame.event.get():

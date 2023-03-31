@@ -11,8 +11,15 @@ MARGIN=1
 HEADER_MARGIN=70
 BLUE=(204,255,255)
 SIZE=[SIZE_BLOCK*COUNT_BLOCKS+2*SIZE_BLOCK+MARGIN*COUNT_BLOCKS,SIZE_BLOCK*COUNT_BLOCKS+2*SIZE_BLOCK+MARGIN*COUNT_BLOCKS+HEADER_MARGIN]
+APPLE_NUM=1
+pygame.init()
+score=0
+score_font=pygame.font.SysFont("arial",12)
 
-
+class Apple():
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
 class SNAKE_BODY():
     def __init__(self,x,y):
         self.x=x
@@ -34,6 +41,7 @@ while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             pygame.quit()
+            exit()
         elif event.type==pygame.KEYDOWN:
             if event.key==pygame.K_UP and d_col!=0:
                 d_row=-1
@@ -68,8 +76,47 @@ while True:
 
     head=snake_blocks[-1]
     new_head=SNAKE_BODY(head.x+d_row,head.y+d_col)
-    snake_blocks.append(new_head)
-    snake_blocks.pop(0)
+    for i in snake_blocks[:-1]:
+        if new_head.x==i.x and new_head.y==i.y:
+            pygame.quit()
+            exit()
+        elif new_head.y>=21:
+            pygame.quit()
+            exit()
+        elif new_head.y<=-3:
+            pygame.quit()
+            exit()
+        elif new_head.x<=-3:
+            pygame.quit()
+            exit()
+        elif new_head.x>=21:
+            pygame.quit()
+            exit()
+        else:
+            snake_blocks.append(new_head)
+            snake_blocks.pop(0)
+        
+    for i in range(APPLE_NUM):
+        r_x=random.randint(0,COUNT_BLOCKS-1)
+        r_y=random.randint(0,COUNT_BLOCKS-1)
+        for i in snake_blocks:
+            if i==(r_x,r_y):
+                r_x=random.randint(0,COUNT_BLOCKS-1)
+                APPLE_NUM+=1
+            else:      
+                apple=Apple(r_x,r_y)
+                APPLE_NUM=0 
+    
+    
+    draw_blocks("Red",apple.x,apple.y)
+    
+    if new_head.x==apple.x and new_head.y==apple.y:
+        score+=1
+        APPLE_NUM=1
+        snake_blocks.insert(0,SNAKE_BODY(snake_blocks[0].x,snake_blocks[0].y))
+        
+    txt_score=score_font.render("Score: "+str(score),True,WHITE,"Blue")
+        
+    screen.blit(txt_score,(50,50))
     timer.tick(2)
     pygame.display.update()
-    
