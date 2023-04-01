@@ -14,7 +14,8 @@ SIZE=[SIZE_BLOCK*COUNT_BLOCKS+2*SIZE_BLOCK+MARGIN*COUNT_BLOCKS,SIZE_BLOCK*COUNT_
 APPLE_NUM=1
 pygame.init()
 score=0
-score_font=pygame.font.SysFont("arial",12)
+score_font=pygame.font.SysFont("courier",36)
+speed=1
 
 class Apple():
     def __init__(self,x,y):
@@ -24,6 +25,11 @@ class SNAKE_BODY():
     def __init__(self,x,y):
         self.x=x
         self.y=y
+    def is_inside(self):
+        return -1<=self.x<COUNT_BLOCKS and -1<=self.y<COUNT_BLOCKS
+    def __eq__(self,other):
+        return isinstance(other,SNAKE_BODY) and self.x==other.x and self.y==other.y
+      
         
     
 screen=pygame.display.set_mode(SIZE)
@@ -36,7 +42,6 @@ def draw_blocks(color,row,column):
 snake_blocks=[SNAKE_BODY(9,8),SNAKE_BODY(9,9),SNAKE_BODY(9,10)]
 d_col=1
 d_row=0
-
 while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
@@ -76,25 +81,17 @@ while True:
 
     head=snake_blocks[-1]
     new_head=SNAKE_BODY(head.x+d_row,head.y+d_col)
-    for i in snake_blocks[:-1]:
-        if new_head.x==i.x and new_head.y==i.y:
-            pygame.quit()
-            exit()
-        elif new_head.y>=21:
-            pygame.quit()
-            exit()
-        elif new_head.y<=-3:
-            pygame.quit()
-            exit()
-        elif new_head.x<=-3:
-            pygame.quit()
-            exit()
-        elif new_head.x>=21:
-            pygame.quit()
-            exit()
-        else:
-            snake_blocks.append(new_head)
-            snake_blocks.pop(0)
+    if  not new_head.is_inside():
+        print("Game Over")
+        pygame.quit()
+        exit()
+    elif not new_head.__eq__():
+        print("Game Over")
+        pygame.quit()
+        exit()
+    else:
+        snake_blocks.append(new_head)
+        snake_blocks.pop(0)
         
     for i in range(APPLE_NUM):
         r_x=random.randint(0,COUNT_BLOCKS-1)
@@ -113,10 +110,12 @@ while True:
     if new_head.x==apple.x and new_head.y==apple.y:
         score+=1
         APPLE_NUM=1
-        snake_blocks.insert(0,SNAKE_BODY(snake_blocks[0].x,snake_blocks[0].y))
+        speed=score//5+1
+        snake_blocks.append(apple)
         
-    txt_score=score_font.render("Score: "+str(score),True,WHITE,"Blue")
-        
-    screen.blit(txt_score,(50,50))
-    timer.tick(2)
+    txt_score=score_font.render("Score: "+str(score),True,WHITE)
+    txt_speed=score_font.render("Speed: "+str(speed),True,WHITE)
+    screen.blit(txt_score,(SIZE_BLOCK,SIZE_BLOCK))
+    screen.blit(txt_speed,(SIZE_BLOCK+230,SIZE_BLOCK))
+    timer.tick(3+speed)
     pygame.display.update()
