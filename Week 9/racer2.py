@@ -5,7 +5,7 @@ import random, time
  
 #Initialzing 
 pygame.init()
- 
+COINS=[]
 #Setting up FPS 
 FPS = 60
 COIN_SIZE=(40,40)
@@ -25,6 +25,7 @@ SCREEN_HEIGHT = 600
 SPEED = 5
 SCORE = 0
 COIN_SCORE=0
+
 #Setting up Fonts
 font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
@@ -77,38 +78,69 @@ class Player(pygame.sprite.Sprite):
                   
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
-        super().__init__() 
-        self.image=pygame.transform.scale(pygame.image.load("images/Coin.png"),COIN_SIZE)
+        global COINS
+        super().__init__()
+        self.r=random.randint(0,2)
+        print(self.r)
+        if self.r==0:
+            self.image=pygame.transform.scale(pygame.image.load("images/coin1.png"),COIN_SIZE)
+        elif self.r==1:
+            self.image=pygame.transform.scale(pygame.image.load("images/coin2.png"),COIN_SIZE)
+        elif self.r==2:
+            self.image=pygame.transform.scale(pygame.image.load("images/Coin.png"),COIN_SIZE)
         self.rect=self.image.get_rect()
         self.rect.center=(random.randint(40, SCREEN_WIDTH-40), 0) 
+        COINS.append(self.image)
+
         
     def move(self):
         global SCORE
         global COIN_SCORE
+        global C2
         self.rect.move_ip(0,5)
         if pygame.sprite.spritecollideany(P1, coins):
             COIN_SCORE += 1
             self.rect.top = 0
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+            COINS.clear()
+            self.r=random.randint(0,2)
+            print(self.r)
+            if self.r==0:
+                self.image=pygame.transform.scale(pygame.image.load("images/coin1.png"),COIN_SIZE)
+            elif self.r==1:
+                self.image=pygame.transform.scale(pygame.image.load("images/coin2.png"),COIN_SIZE)
+            elif self.r==2:
+                self.image=pygame.transform.scale(pygame.image.load("images/Coin.png"),COIN_SIZE)
+            COINS.append(self.image)
         elif self.rect.top > 600:
-            self.rect.top = 0
+            self.rect.top=0
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+            COINS.clear()
+            self.r=random.randint(0,2)
+            print(self.r)
+            if self.r==0:
+                self.image=pygame.transform.scale(pygame.image.load("images/coin1.png"),COIN_SIZE)
+            elif self.r==1:
+                self.image=pygame.transform.scale(pygame.image.load("images/coin2.png"),COIN_SIZE)
+            elif self.r==2:
+                self.image=pygame.transform.scale(pygame.image.load("images/Coin.png"),COIN_SIZE)
+            COINS.append(self.image)
             
                    
 #Setting up Sprites        
 P1 = Player()
 E1 = Enemy()
-C1=Coin()
+C2=Coin()
  
 #Creating Sprites Groups
 enemies = pygame.sprite.Group()
 enemies.add(E1)
 coins=pygame.sprite.Group()
-coins.add(C1)
+coins.add(C2)
 all_sprites = pygame.sprite.Group()
 all_sprites.add(P1)
 all_sprites.add(E1)
-all_sprites.add(C1)
+all_sprites.add(C2)
 
 #Adding a new User event 
 INC_SPEED = pygame.USEREVENT + 1
