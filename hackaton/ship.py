@@ -69,9 +69,9 @@ class Boxes(pygame.sprite.Sprite):
         elif self.r==1:
            self.image = pygame.transform.scale(pygame.image.load(box_img[self.r]).convert_alpha(), (50, 50))
         self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(50,800-75),random.randint(50,800-50)) 
+        self.rect.center = (random.randint(50,800-75),random.randint(50,800-75)) 
     def gotboxe(self):
-        self.rect.center = (random.randint(50,800-50),random.randint(50,800-50))
+        self.rect.center = (random.randint(50,800-75),random.randint(50,800-75))
 
         
 def draw_winner(text):
